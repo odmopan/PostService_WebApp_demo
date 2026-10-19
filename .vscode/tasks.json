@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start web server (3000)",
+            "type": "shell",
+            "command": "npx",
+            "windows": {
+                "command": "npx.cmd"
+            },
+            "args": [
+                "--yes",
+                "http-server@14.1.1",
+                ".",
+                "-a",
+                "localhost",
+                "-p",
+                "3000",
+                "-c-1"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "web-server",
+                "pattern": {
+                    "regexp": "^$",
+                    "file": 1,
+                    "location": 2,
+                    "message": 3
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Starting up http-server",
+                    "endsPattern": "Hit CTRL-C to stop the server"
+                }
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated"
+            },
+            "runOptions": {
+                "instanceLimit": 1
+            }
+        }
+    ]
+}

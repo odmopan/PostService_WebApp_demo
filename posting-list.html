@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Список відправлень</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main class="container">
+            <header class="page-header">
+                <h1>Список відправлень</h1>
+            </header>
+            <nav class="toolbar" aria-label="Панель інструментів відправлень">
+                <a class="button" href="posting-edit.html">Створити</a>
+            </nav>
+            <div class="table-wrapper" role="region" aria-label="Таблиця відправлень" tabindex="0">
+                <table aria-busy="true">
+                    <caption class="visually-hidden">Поштові відправлення</caption>
+                    <thead id ="table-header">
+                        <tr>
+                            <th scope="col" x-column="id">ІД</th>
+                            <th scope="col" x-column="content">Вміст</th>
+                            <th scope="col" x-column="from">Відправник</th>
+                            <th scope="col" x-column="to">Одержувач</th>
+                            
+                            <th scope="col" x-column="deliveryType">Тип доставки</th>
+                            <th scope="col" class="number" x-column="weight">Вага, кг</th>
+                            <th scope="col" class="number" x-column="width">Ширина, см</th>
+                            <th scope="col" class="number" x-column="height">Висота, см</th>
+                            <th scope="col" class="number" x-column="depth">Довжина, см</th>
+                            <th scope="col" class="number" x-column="value">Оголошена вартість</th>
+                            <th scope="col" class="number" x-column="price">Ціна доставки</th>
+                            <th class="action-column">Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postings">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <div id="toast" class="toast" role="status" hidden></div>
+        <script src="scripts/components/toast.js"></script>
+        <script src="scripts/services/posting-service.js"></script>
+        <script src="scripts/pages/posting-page.js"></script>
+        <script>
+            const postingPage = new PostingPage();
+            postingPage.refresh();
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Створення відправлення</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main class="container">
+            <header class="page-header">
+                <h1>Створення відправлення</h1>
+            </header>
+            <form class="posting-form" id="posting-form" novalidate>
+                <div class="form-field">
+                    <label for="from">Відправник</label>
+                    <input type="text" id="from" name="From" required minlength="2">
+                    <p class="field-error" id="from-error" hidden></p>
+                </div>
+                <div class="form-field">
+                    <label for="to">Одержувач</label>
+                    <input type="text" id="to" name="To" required minlength="2">
+                    <p class="field-error" id="to-error" hidden></p>
+                </div>
+                <div class="form-field form-field-row form-field-wide">
+                    <label for="content">Вміст або опис відправлення</label>
+                    <textarea id="content" name="Content" rows="4" required></textarea>
+                    <p class="field-error" id="content-error" hidden></p>
+                </div>
+                <div class="form-field form-field-row form-field-compact ">
+                    <label for="delivery-type">Тип доставки</label>
+                    <select id="delivery-type" name="DeliveryType" required>
+                        <option value="">Оберіть тип доставки</option>
+                        <option value="Department">До відділення</option>
+                        <option value="Courier">Кур’єрська доставка</option>
+                        <option value="ExpressCourier">Експрес-кур’єрська доставка</option>
+                    </select>
+                    <p class="field-error" id="delivery-type-error" hidden></p>
+                </div>
+                <div class="form-field form-field-row form-field-compact ">
+                    <label for="weight">Вага, кг</label>
+                    <input type="number" id="weight" name="Weight" jnum="0.1" step="0.1" required>
+                    <p class="field-error" id="weight-error" hidden></p>
+                </div>
+                <fieldset class="dimensions-group form-field-row form-field-wide">
+                    <legend>Розміри, см</legend>
+                    <div class="dimensions-fields">
+                        <div class="form-field">
+                            <label for="depth">Довжина</label>
+                            <input type="number" id="depth" name="Depth" min="0" step="1" required>
+                            <p class="field-error" id="depth-error" hidden></p>
+                        </div>
+                        <div class="form-field">
+                            <label for="width">Ширина</label>
+                            <input type="number" id="width" name="Width" min="0" step="1" required>
+                            <p class="field-error" id="width-error" hidden></p>
+                        </div>
+                        <div class="form-field">
+                            <label for="height">Висота</label>
+                            <input type="number" id="height" name="Height" min="0" step="1" required>
+                            <p class="field-error" id="height-error" hidden></p>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-field form-field-row form-field-compact">
+                    <label for="value">Оголошена вартість</label>
+                    <input type="number" id="value" name="Value" min="0" step="any">
+                    <p class="field-error" id="value-error" hidden></p>
+                </div>
+                <div class="form-actions form-field-row form-field-wide">
+                    <button class="button" type="button" id="submit-button">Створити відправлення</button>
+                    <a class="button button-secondary" href="posting-list.html">Скасувати</a>
+                </div>
+            </form>
+        </main>
+        <div id="toast" class="toast" role="status" hidden></div>
+        <script src="scripts/components/toast.js"></script>
+        <script src="scripts/services/posting-service.js"></script>
+        <script src="scripts/pages/posting-edit-page.js"></script>
+        <script>
+            const postingEditPage = new PostingEditPage();
+            postingEditPage.init();
+        </script>
+    </body>
+</html>

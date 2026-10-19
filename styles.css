@@ -1,0 +1,338 @@
+/*Всі стилі можуть бути сформовані з допомого LLM моделі */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f4f6fa;
+    color: #243247;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 48px auto;
+    padding: 0 24px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.page-header p {
+    color: #59677b;
+    margin: 0 0 24px;
+}
+
+.toast {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: min(600px, calc(100% - 32px));
+    padding: 12px 20px;
+    border: 1px solid;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(36, 50, 71, 0.18);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.toast[hidden] {
+    display: none;
+}
+
+.toast-title {
+    display: block;
+}
+
+.toast-body {
+    margin: 4px 0 0;
+    font-weight: 400;
+    white-space: pre-line;
+}
+
+.toast-success {
+    background: #ecfdf3;
+    border-color: #12b76a;
+    color: #05603a;
+}
+
+.toast-warning {
+    background: #fffaeb;
+    border-color: #f79009;
+    color: #93370d;
+}
+
+.toast-error {
+    background: #fef3f2;
+    border-color: #f04438;
+    color: #b42318;
+}
+
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    padding: 12px;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 12px;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #1d4ed8;
+}
+
+.button-secondary {
+    background: white;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+}
+
+.button-secondary:hover {
+    background: #eff4ff;
+}
+
+.button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgb(36 50 71 / 5%);
+}
+
+.posting-form {
+    --form-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--form-gap);
+    max-width: 800px;
+    margin-top: 24px;
+    padding: 24px;
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 12px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: white;
+    color: inherit;
+    font: inherit;
+}
+
+.form-field textarea {
+    resize: vertical;
+}
+
+.field-error {
+    margin: 0;
+    font-size: 14px;
+    color: #b42318;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.form-field-row {
+    grid-column: 1 / -1;
+    justify-self: start;
+}
+
+.form-field-wide {
+    width: 100%;
+}
+
+.form-field.form-field-compact {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.form-field.form-field-row.form-field-compact {
+    width: calc((100% - var(--form-gap)) / 2);
+}
+
+.dimensions-group {
+    min-width: 0;
+    margin: 0;
+    padding: 16px;
+    border: 1px solid #dce3ed;
+    border-radius: 6px;
+}
+
+.dimensions-group legend {
+    padding: 0 6px;
+    font-weight: 600;
+}
+
+.dimensions-fields {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.form-actions button {
+    border: 0;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.table-wrapper:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th,
+td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e6ebf2;
+    vertical-align: top;
+}
+
+th {
+    background: #edf2f8;
+    color: #35465f;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+td {
+    min-width: 100px;
+    overflow-wrap: anywhere;
+}
+
+td.content {
+    min-width: 220px;
+    max-width: 360px;
+    white-space: pre-wrap;
+}
+
+.number {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafbfd;
+}
+
+tbody tr:hover {
+    background: #f0f6ff;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 600px) {
+    .form-field.form-field-row.form-field-compact {
+        width: 100%;
+    }
+
+    .dimensions-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .posting-form {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .container {
+        margin: 24px auto;
+        padding: 0 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    th,
+    td {
+        padding: 12px;
+    }
+}
+
+/*ці стилі додані окремо щоб підсвічувти поля вводу з помилками валідації даних*/
+.form-field input:invalid,
+.form-field select:invalid,
+.form-field textarea:invalid {
+    background: #f7f6f4;
+}
+
+.form-field input.validated:invalid,
+.form-field select.validated:invalid,
+.form-field textarea.validated:invalid {
+    border: 1px solid #cc4404;
+    background: #fffcf6;
+    
+}
